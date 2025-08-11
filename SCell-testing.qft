@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE RootStep>
+<RootStep id="_0" indentation="0" linelength="160" name="root" version="9.0.5">
+<include>qfs.qft</include>
+<include>lib/SCell-lib.qft</include>
+<variable name="appdir">${qftest:project.dir}/scell</variable>
+<variable name="client">scell</variable>
+<DependencyReference id="_8q" reference="scellib.init.startScell"/>
+<TestCase disabled="true" id="_Dd" name="Check success of startup">
+<CheckImageStep client="$(client)" component="ITC_SCELL_WORKSHEET_VIEW" height="303" id="_E0" width="1061" x="0" y="2">
+<ImageNode height="660" name="checkimage" width="1292">
+<webp size="7240">UaRzSt4Av(*wpBQPT?Jl^JAA;ja*/B":!#O=bx:}a#c=Ow9B9Zq7?COP?:WK*f@\*).X$#ZN[x=avCwTv1
+b9ZWs0;P!El\L/?G#w,ht1Y[k'/]!=9,z-K|vN{,~/?.M//n/744tcIDr?9b1Tm"M*5*ao(%OJ?zNBU!
+Q!_G`Wx?0kUk)4nS.0RlaBp+c|Qr5d-NnD;Y0mj\=WuY`0ptGKvBVtvv_`AKJ$+dA3uWrLnIJBD*tp+]
+e_s]7\um^Y(=k'1$qkg8ze}~JqPk3n!rNcNc@C`w!B|ad,dUcRc[wEh46aK]C+dK]"HB|X%f^Mgg!s.}
+y()^)^"~g*#yC(DvC(JaGX+XX)LSZ[zH%ViUY9TgV!5aK|Mc=6/{#`Uc9B"A:\13z30q$$Ya#oV8wFRr
+_)szW1g"7b/Wy(PN'(f){.6;Co@b/`NnHqGUy:Pe+][7ze!VRo]sD!KVJVPo5EwQcy#^zdCo)x_k[T9b
+NZO=uYm~B"HFdi)g#\Aq}9$,a|=lG`?R|#`[(Wd'8JvPs$D^Ow(F)X?Y+uO=uYk#*Gjj7RFgDPhEW8Ag
+@g1{en5sA-B'a5wxO6e/J-uJ`cJ%L.K28v5y/Nb$@|XY=!kGCQb/yrwM$y;^1Y+OeN,-S|Do0Q@W0'y|
+4(F@Y=HO_x+GB|sE'n0d}I;WN(EDeeW"^9[DbCWC[WKRAY.)I0}I%WQ}ImLP%ap1v[@CtMZ$f:W~]s@U
+~w8jjZi51^kmb$~YCA'!tUsF-qjh2%D_Q_F=0m}Z3~yz$ZuMozRUI~q-PdVdHlwv0UJ}c'B+n[YClnsA
+LZ6@vr5Z'M_yFOPiDwoRusC]'!Rx]oo\mGn(lN(n`rcHh0ya'w]wQTeh/`w"]s1ze[IgaGFABBF%}|^F
+MjlYFUhR,*F6$$ZN=,kmj*HCvv.NTV$*rEKA.q3K7?KIfI|bh4FP\hN1HzNjiQ[norjcE+`IuA|bP^.k
+}[nfH9bITOGT`2dxt'f:0qzA=bft3idffG2SIp5n%V3Fre9tX"es!8anZd9.jEk5i1Emzg)qmL,uEK0C
+=Th)JtsIU%96b]qKDAz,]TB[eyA!XNAACQ7:6EsCZ2q=,|]dgT!Mw(`Wn5zby%S3qAG-uQ@d#ppMpMf!
+}/jz8+X]|;fb:H(gj*B0rU}k6.gwv(]],-W:r4;$~M=o@0#rD3pECA53LZfy-ka@Eo)A~lSq+a;5c?ZH
+h^Y9]@?MwQyNsy}(ZxFX-3#^9qG'KA/~%S1{PVL.I[4:Af{(.mKH;gp43`B\m*0_~Q36ncwt?j.56D5O
+WXhG'L0J@1|cqLMibp\vaOr-i_JWbk0IKJLkSZh!}wSI2E@4,O.huStQ8E2'8/gmaVw|$,"N(wHYj`:g
+lyk$=1{klB;GYN]?M|Z}A9g*`dg3D#)f]t0N}{GJpSKp@d5(7D+pD?w))K3.I,eOWNBOIvtSINrh!$ul
+Q|y\ft!LpIK/Gj%~"Hz%4e{hBjw=L6}okF6c)[0Riw^:[kzn|$KpeL:'e/a,v@R_M/f*";Lby[M;OD1k
+mV09T%Wr;8"^rZ[V3dZ6RXY)x\p|9U$ux5VmUarI5-)x4rLnI!XzdvGq9%i%fI.hW]dTzDe/8Y/VPP^O
+dM1uQ^u!8F3^kqLi=.]2!n!QQ?),$EY?86'Ghb$yhl]5-gY5W^L;OgfNy]`uL`5\/qu8Frh`a9PLjqOf
+vq}~}(`W}GlQa[nG~|Rt#yQew5$9/~@gl*2S_s$Bv(*]x-PAND#\Z;c9OmRKxiwW*7Q=oXYvu-IptDZ7
+Wz'F.2FLW|^u.V5-PIL{)X#wzSi00C/55mVTvS002#Ozlq-%$Tsg3uyw'fQSLN^z;{Oz7i?9n"BM$p~e
+64_1f45N@dZ=PrQ!n3XW,u-6rqn]eSv5te\Ct-1"w?p{G$Ke6I'^%MQ0'!|yImoe)("3ZXwGyUnMJkL^
+0_~i6Xqlztm,[;5xs=W+H*L%J5O3?NCk`Ey,LD6UniW+pveVB,v0DAwQa!jr{^,TfPEQ%H8NN)@62AC"
+LQ_Z\l!-]URJafEp6Q9~h8EiTU=n"NQ;YA9z@^-]b]s:Oe~zy2kE)Ui"1uxbr2iAZKv]+F[_?PXDvD0#
+q/rDYR[azH4e=Sq4g:(cGTvOLWiF'?dduWm5USj);s!8B^,.gNvn{x!RY+hY#?J:QA#TW1E#6{(:wK+x
+K.^DL%2P8~Lj!$WU%g9@!5N|.lN^nqnlyf.?8?L,O926~]T;O(cm'yJ+p.(5lRnkzDv(T^@L*e?%2p4j
+Vx'k=\Sr/Gij7j1_YWvE'Ad2Ohs0qn7qrrNb5VBWF?(pl:%Rg$d$s0MwA$V%d!jyccf4e[Ul1wcsRB@9
+'E9!vlEJ83c5%NIk,Mr]frHE2rcm3RscUI9q.YF()iCkQ3h5${y'{CyRGYBAd8EP|'.!GUxOW:`0!F4m
+~NM1qCTs$u.6H4DANf{g:Ygwkd10G%v0|@B_}JY_fOyjl]!Uhv%FK)V@gp0%SO!'tE2PXf"_a19{eb:P
+NjR},8@DY,l?$b}2IK0%2cwuYwTHEw}bwhYOl-c.8RVe`KIVKAwg3'a,BOqjOs,ZcM{)rCaGa|9pz)6q
+`A\8R]-NREy@E:J#@0b?)TQDd*W+~zb]V)dh0c;VnOVhgt!^Pg%wAELEYJV=Q;}]K/pP}dwF2ZG~SRzY
+`#EOfnikXoun9cR[TTBs1ur!Y#~V1GK`kX1^*Tp:)Oz?h!kztUKxcjy+:;}FK!0#[:Zot)(p25)`uDsT
+e6`7ORPweED/G+(fP_]b',#0WxRdvZReB0UC?x$ic1Ze..p*vPtW/XwFtmp't'5/M$j@zB)+yzW%R*O_
+?5/bEuQmgc5dDk9[b?_dC"nwzFJ}A=mq#LZM@472[WF+ZP),t;({%r=\\Pj\?s6nNGE{Wq=aN3Ysx!\"
+p=(dU|307h;0JKZy,F~M,|ykqchPnD0P:/?k@Rg,/]z2axe[{CUb*2-7r%y`)p2$#)225ZFkIjG1$S[W
+*jII'a{HP7H.k;=dd89UO5I!5h!:kdRU7**y6FhU8d*(Lt@tx5#%?"U`a@6[Hf{iIS}~w{ihD-yag=gH
+}vjFMT(]6V=.tnX%AO?`MJjC]Hyt)n?#)}^VJ9`-#7i7,4:p(1;gk9p!Sx3rnB2|+9m=$L2Nx2{fIbey
+FwXgOZ+WYfK#)i!f4of~vnZ@t0bqym)2f)6DrK!.`g1,?;/P:bA;)k+PlA9zPmjwpe4^5=SEa=1(B]:m
+C_B3{g5E/VTs[-Ie`K1.o,zfrHM]n,_CH/#b21`Er.A;/bo-|BwEJmXfVz22E~Zjj!R5UKKTkQ!1n`n{
+7gyF3E_sr%q1zU`0'=[WGJs9|K=+L|3T|M[VvvPS%W~7trSTuVlPm89tZC{7i1y4.!D{D/1`mp:wO?/[
+*'+G9Js5;Q}APQUj)=Yba4~{TT{ZKG-5-qho'PJRv4,A3Xf1rfv\f$.7Ztwrvf53'fHbQ_60$A5'd!b-
+(H1u_t!RO(;q1gSHN-kk6vILz`pYg\:0zG$Yn8BJ63(Z!C:|pBCo3c\'R6]acpVu958=pj;Old{-mJ8p
+%Yd6|IM=ewt9pD@ldm-qfIryL`('')6J3`W%k^?1r,smfS[6?G.DDJ!I]N7vcKo}kU2slFhIc7CS`!;O
+5}n({K~8fog26`7q6|F%aYZ(\;`fh"^8SFoE55j{".2/V+sqB+nb`fCL"I}dH?BCDYz5!|8_z``fQ=\l
++;h!EHT[=Ip^%qKFbkS3~!{!'\a$."+che1(P|;athQy??EA9J=dFoax!;"z"_0r{`:}:X,s@/e#GYjv
+SV:}5('DK|y:YyqA~89kwR2oLPG6W+1eAV4~7![@H~6UJsn;a?J%1Q~!z!%mDXQlX+s^fAwQQL4ByQSH
+#^}qGWBA!2UiCtX+'PwswK"NyTi=8KknY=F^bAZ`AEO,dyHAOWY]y)NdHoP+Tg%~'I'XY)2IdO#}e1bA
+^LAR@([Ci:|egfB8Z^;G1/.f)E1CA3jR$sYp_V$`z%VF#[dW}*)\4cG[WJ-'uDK*r6QZ.'OT$w$R2ic|
+sFOO@v6tD{L6b35}r~+~CHjbd;_ac_"fTNSH~ik_kV#RD+Lw:t\;KrkmA{#)p}Ezv)_}ram@6_gy35Dx
+P,wT.Ooi%Gasp=sGV[=TnpZsJ-C'"NFW?]%toqHl({HFwvEZ[t_ed$u54=QB04fI[]v%b7g9MD\bUEGo
+#\%Lj_R[TD7;XY~8A`{%5\Pa5n1~9gKl|M)dd3E%Kd7E/1%b}R{%(qdBZL:=ZLuFam=u_~O%@ZVD9@!V
+ibe7:{#2RQ{*m`uT0RFJj)3A?H(Hy=u]B^jf?=j@`H#Pe+2!*5-7)Jmj8B;7_?|sq@k;^CuUeP0CH`:;
+[_KfUL[q~lN-9RZ`)s=uy+eHMOE${VLp-PvgWB@(2A;*F1ttOphpq*w@bOJ9}q9^)/{b.A/Bgbs%RC3I
+-`s2O6THey__8TN~5j"z'l\yG0#w{LV^^2LgT9,Tjne+RjzDSC(1[P{AhdVa%K[]x?%TFhj}$`qWiZL]
+c|f.f+V#%Dy:(H0!EKk,~7h47@{p-YE2_hZh6yc#R~b$v-B_+mD[-Bo!hecLh+T^QPm2wh+Pb!AY;)NK
+5vBc1l,WA75bMGAqVX#LNs==A_(xiYTXum#LXY65;mf={MC2=bkLiZn'j'F7KS^;Nj|c$dUtrLx9M~hQ
+M[+N'q!W$y+,EVDf9eqi$4Ig0~xPz!+PJOR2^}5^]!UW5Pg,UZ3P$-lTTP`XT/u\Ypcn(]}?s*IQeRJ9
+UMkSqtbUUA}u|Ev[8P'~S#l|IVrAD,Q5Wna:^+BKA*I.toYJ7rT_4IjTI?!I'XjW$#/X~v^q'%Gq'##@
+\k3{(pHF|Wob6@H1=i)8'dgXzePCWdm[UTC{o.]#ui7PnhZ+R;N!v)vrkn-a0~grt9r`\WvBlX6)7@zV
+ecQttm$[8ZRdS|cb~SJU.@W'_PzDxI:\%Ts~{3m|w9N*RqGN%!d5},`$Us-Q7gYl]C8-Tx+"'YvZ=A_z
+J~~JWa-yL`5\Cv.?a\fC3L3DA=h_U'6p"^GKeyW'x_:VJs:%B'Pn11o4mkW2}joGOz5+d3(dlRbJ'C3g
+f!uu"_VWz~~J0Zac)Or8Y#|8i\(QUC/Lm(\5X37y@yE?e_a7rNnff+Io9|C9Sr^89kMwp8:RdZ)Hqc*$
+EuHAYEP.c3i#h~iP/_Eh]1T._;GZ6m_m30-"rL1ufm?eHwaqF[-5THW6@^pJ1EP'cKOCYvdkzMOE}qrY
+PC}3cqV-g6t;aV[SY[hDDa,+Aa(krY89Wv".6j"+C%Vz:fT/;#G}=S8Wk,_:Ml6Y$3:ybS-EiL9`zW'%
+@R1yRk,W`7{bOv7hL;4BTl(VdvI.+]TaPjk0Y9kI1Nn;Nq^0mC,H7}Y-o`5/K%s*~Ea3I39!h~,.1?j_
+8@ip^?CL5w'VVw:tQhUM,WPO;q6J+o[mRbXHom/4zyjV6L+TrMThb-({X92$!`OHGH*1X92BY6!,qix=
+9VN}`^m$=e:BIu?JX}TGi5b}7uvLQlL8F'%]h'UxOC5k@=[vJr(p!EEXND'9HqQ=YF*m4I~h*l!b|[MJ
+`J:\%Tej%}y3O**'.DG}SC"Q'*Y9T$~`U^O~UWXXW'S;eTXuKn*24R%@Ds`-btk4'R+1Mais9EZ1*9oW
+.`_d:tjLG,t:SiEk3P;4tdthR\gd"0TCE]#;x|q=Oi3,lcp9V]*J.IN%1||p,;D{TbEZw^q`bQv=TJRf
+QcsMkV@t{xTe*Hk|$q_=Z(@:zMJ7YsVS't8`$dY-bbrUW;w2']0i.(RDr'~k"S]f7j_kzVT%CPxhRCUu
+{'Rqh#g?/56kO9d$I-(t:D^3*BGH0Q#}v3Ol_OA"keMY'3bOXG^V*aj3|,nd?`1VrfyO!'8Kk=6m,B0*
+5iO7^L4I:jw,JBd0Wl0fB!+*l*,0i8u`G?}i0'QOh+1)g7T*5%JDe'S6N5yf;0TC4O`]%rRmM=.sLV7*
+u}I$AGWYv9kzyd6MXp)CTttu;ZB-N$%O*$ea}b.}rDMl*.~8:(Io~P!5;PKmHqS`xb3]_BOCMb}%o9nK
+^!lXmO4QDI.%CeQy9=EM=TBElV5yib~~/8h~,.KADZyhQd\gtGAB/pDY_GhE;xR/vgA#,06yZ#gwrh'\
+lBW3J#}=y?"f'!-t`%rDDY^ija,QB+[5:P9-AO-G1`yv#wo0G4d17Z.d8qya;bU(2$d^V7LXF/LF)x3M
+EPDg}SMiHv@yU1L/I:R+{L\}9pGr_j:0RE5@A=-,}jRw@|zJF@UL'F[9hio(+*iU#W6_nK8~Agjk@OMA
+9!i8XXhUM9BD^DNW/9ZH-`0[N"qIS[W~Svb0fLROacQ[sn~T,uy#GZjcl$B{.Q"CV=67;XG+Jmr*.q@W
+,k3**I*%,eA}+/r'fg?#{Y5Kq}a\hQh.W_Nhr$d$P'}QtBK\#AUM=,|d^VjEPjsv\`1M2?j_NNA"keQu
+A0?(2f9EGcHBjk|:McBaqB+.k]"`)d''u(18]dIxWLaCo_keM!ilZ%U}WJfQ{Da#UxWLS3`~Q6h~iPHa
+E``hIdF?H6vq~9xO49/=\UNDv3pE5aXlmKZC1rZr9/XV(Ti^;XhdUy\B#4vqtn'?kJL+0tfa;K25-\lk
+9s]s'~{3m|w9N*RqdY=U|F-e8K=k63A^N,x_rIL+0tfa%Ig=\U|FP|E$!p^LFJL+)t,C9/XV($SzejmK
+ZCWIHn'k63A^N,woEaE`m'(0%YE`X?IFvRAxj_Ma}sIdv#cFup0jC:XVA\Z05YE`[hIdMOL+)t]3{m)_
+1k5Kk=`ws()\P+'{:]3y=k5Khg6r6,"1!pgURF+V9hxtfanWO)w$!FtWiU'~fa%}*eO0G@}(mTaOL+_t
+=mdRUyMB#09v-\lkP(d!DM,dUysBhCKaE`~hIdn#cFp.\UyEt93h?k63A^N,6=IdUya|!0iw\UTRk.'B
+}Pt(xO!~faD:XVB\YHk^pd@g1cUy\B#0f5vqq_~GKj+Ck^;X_U|i]YE`]'3#;.#^T3/IL+0tcNK=-\lk
+*%,R6gE6vqU_i,c4vq$_ke.!p|w9N*Rq1@bjYJL+0tfaBoOP-\lk*%,R\k63A^N,d5vqs_J2faE`"'v#
+:bob\U+I-uG@F)9k5K6ra?H6vq8_AC4!p|IV/+r(30%YE`[hId(%#p^Lp91=AS(/XV";Z0k51.\UyE-e
+}2G@.({b/~d5vqpnf.7jmKZClrVF'k5Khgb42`IjmKZCQq*mM,\UyE-e/^v"+\7C8~|a8\P+En_O#l'~
+=mYwAt%X!/XV";Z0Z|?k63A^N,x_:JL+0tfaGJKx-\lkP(d!'z:(\U|F)ozw!p^Lp98IL+)tF:XV)Tg^
+Hj@g1cUybEPg)_P@.GAtSP'~S#}OU|u#%"/ow|:Qm_LU0zdE']?;LO.GeW76!+yz6xl%*r?K)v4}=04X
+b8_VR/F@MN8skKC=4N\M3[D`zGeW=kbI4[D`zGeWmB%UUem_ot$g[-Yy4}a9+7#HwKR/F@1C;D4(ujR|
+g_/5::o%*rf;#~jk/_Rqf`N;F@@(2f:9k4J+0~~"p!CBe9dyG'c,4l#}d9dyG'c,/m$tS.St`"{nlB\B
++Y}FBVF][FBV!|KS_FBV!|~p]cRwgKy|I`pwj_Ma{sIdd9cFupe*$U|F-ey.#87g5KL-30o,f(`]I[D`
+''/8JZ|^angK0B+.-Y5+e9;.G'/wmp^LBVF]:]SS@g[I.%6g63A^N,]_tMi9`KtWiU'~faB}*e=,F@@(
+Q6}g63A^N,8(@@D`[hId@-6mgK~ChPf]D``hIdt9dytpH6U9dytpH6U9;.tp1@#5b2J+0tfas3gjKr#;
+ry_f}sIdv~#0qovq~9xO9;8v*%E:uA=]SS@gClJ"mpJJp9v#XY=]SS@g\nRy/"S#LFRy/"S#LFRyMB#0
+A2'RIJp9e-(MnpM@d+.Nt(xO+~faW%XVX|nvqovqu_=E`@D`[hIdTFl2J+0tfaIDMd%U|F-e=,F@.(Q6
+.)F@$(mTBplpJJp90gl$b%XV";Z0er/pjF%URXAxj_Ma]sIdd9cFupe*$UhH-e8:F@}(Q6.g5KB^N,=[
+b]D``hIdt9dy/V?4.)F@$(mTBplpJJp90gO\b%XV";Z0IJ]V$vgKj0u*RqGNt(xO*;lk*%9?gKZChP%s
+7g63A^N,MdRy\Bkh6a%U|F)ozwopaGp9BplpaGp991J+Ju#QdNgKjE.-YI,[D`'~5em|+;J4?hRyMB#0
+qovq~9xO*;lk*%b`f|E.F@.(Q62]tm=]SS@gClSX?];X@g\nRy/"fa0vJ+ktS#LFRyMB#0C@I6d9;.tp
+1@U+)6r/F@~!p|0[K0[~mT_$J+0tfa{%XV";Z0ctm.F@.(Q6wEO5mpJJp91=~RV%XVW|nv?pvq`9xO$n
+vqo_=E)^D`s4T4og5KC^5D,[D`'~5em|IVbwu(30fNvA%mEBT/F@|szq[QLj~$FLLZ$g[-mbjBNEb?;O
+,T8LyBnp0}'LvAIhcHK9m}!WRy0haI0)Z-r^pSRyE~4q[Qa+n/}g63\2GC8_;`,mwTvBnp0}aPvA23%C
+6^t?g4J+m(6qM`,h[leMJ][K3[D`"~f-oI-0]`OtHWRy%aHC8_y"p%*rf;#~jk/_Rqf`\-a]D`{'/8#,
+]F#;V_vw6}*\O/$UNDv3=})p1F/ow|g68s:4yo:'"')RoB\BD0_Hv582}e4zok|KzecJ]m}e!M4fX+^s
+lt4mBi6N[.msftf%Y-pJIwqzokXK#g+m{_KtI@qNy'NXL.Zf"[J6mrSDb+C57X,r4fQD]-:8\_qyKZrx
+t7GVvJR/Wwj21hf~M^}c+kha2[$U]k,,.~A='yxzg}Ma}~t.mpxR[{/N#{Z0QZ\N9gN'5Qt.;b'5SP_1
+ZrK|LU!;Dq|yokfyVmCigK`'/M4fIj1IASRyk~C8z_hI)Qtd?]pdmruL\QA(R4U):?u/w[tkCXGI?~#~
+gF^a~z4@Paq)FzoAA</webp>
+</ImageNode>
+</CheckImageStep>
+</TestCase>
+<TestCase disabled="true" id="_Cp" name="check version">
+<variable name="version">1.4.7</variable>
+<ProcedureCall id="_Cq" postdelay="1000" procedure="scellib.toolbar.clickButton">
+<variable name="group">Service functions</variable>
+<variable name="item">Show SCell Public API versions</variable>
+</ProcedureCall>
+<MouseEventStep clicks="1" client="$(client)" component="#Dialog:title=About@#Button:text=OK" event="MOUSE_MPRC" id="_DD" modifiers="16"/>
+<ProcedureCall id="_Lp" procedure="scellib.ui.clickCell">
+<variable name="cell_address">A1</variable>
+</ProcedureCall>
+</TestCase>
+<TestCase id="_2" name="examples">
+<TestStep id="_BC" name="input values">
+<ProcedureCall id="_KR" procedure="scellib.ui.inputTextViaCellEditor">
+<variable name="cell_address">A3</variable>
+<variable name="text">A3</variable>
+</ProcedureCall>
+<ProcedureCall id="_B7" procedure="scellib.ui.inputTextViaInputBar">
+<variable name="cell_address">A1</variable>
+<variable name="text">A1</variable>
+<variable name="clear">true</variable>
+</ProcedureCall>
+<ProcedureCall id="_B9" procedure="scellib.ui.inputTextViaInputBar">
+<variable name="cell_address">C25</variable>
+<variable name="text">C25</variable>
+<variable name="clear">true</variable>
+</ProcedureCall>
+<ProcedureCall id="_BA" procedure="scellib.ui.inputTextViaInputBar">
+<variable name="cell_address">S30</variable>
+<variable name="text">S30</variable>
+<variable name="clear">true</variable>
+</ProcedureCall>
+<ProcedureCall id="_CE" procedure="scellib.ui.inputTextViaInputBar">
+<variable name="cell_address">D1</variable>
+<variable name="text">17</variable>
+<variable name="clear">true</variable>
+</ProcedureCall>
+<ProcedureCall id="_CF" procedure="scellib.ui.inputTextViaInputBar">
+<variable name="cell_address">D2</variable>
+<variable name="text">4</variable>
+<variable name="clear">true</variable>
+</ProcedureCall>
+<ProcedureCall id="_CH" procedure="scellib.ui.inputTextViaInputBar">
+<variable name="cell_address">D3</variable>
+<variable name="text">=SUM(D1:D2)</variable>
+<variable name="clear">true</variable>
+</ProcedureCall>
+</TestStep>
+<TestStep id="_BX" name="checks">
+<ProcedureCall id="_Lu" procedure="scellib.api.checkCellValue">
+<variable name="cell_address">A1</variable>
+<variable name="expected">A1</variable>
+</ProcedureCall>
+<ProcedureCall id="_Lv" procedure="scellib.api.checkCellValue">
+<variable name="cell_address">A3</variable>
+<variable name="expected">A3</variable>
+</ProcedureCall>
+<ProcedureCall id="_Lw" procedure="scellib.api.checkCellValue">
+<variable name="cell_address">C25</variable>
+<variable name="expected">C25</variable>
+</ProcedureCall>
+<ProcedureCall id="_Lx" procedure="scellib.api.checkCellValue">
+<variable name="cell_address">S30</variable>
+<variable name="expected">S30</variable>
+</ProcedureCall>
+<ProcedureCall id="_Ly" procedure="scellib.api.checkCellValue">
+<variable name="cell_address">D1</variable>
+<variable name="expected">17</variable>
+</ProcedureCall>
+<ProcedureCall id="_Lz" procedure="scellib.api.checkCellValue">
+<variable name="cell_address">D2</variable>
+<variable name="expected">4</variable>
+</ProcedureCall>
+<ProcedureCall id="_L+" procedure="scellib.api.checkCellValue">
+<variable name="cell_address">D3</variable>
+<variable name="expected">21</variable>
+</ProcedureCall>
+<CheckImageStep algorithm="algorithm=similarity;expected=0.97" checktype="cell_image" client="$(client)" component="panelFirst.panel" disabled="true" id="_Bb">
+<ImageNode height="20" name="checkimage" width="64">
+<webp size="190">UaRzPmBAv(*wpBQPT?=ZVAAAn`.hCA1vU*1^AywYcMKG#P.$?*]yy^UCJ*H%Ey28y[!TjY=M%c7Qft8WSU
+]-8v;Hj$=MNoL/2,*VC-X4aS*qDqx{?~|}M{G}!BjBKp#kMdA!dRG_Pux_"9E_@4HD#@aiHH6vmq4XM7
+tMTDw8|C)#R@''AVP"hAI)NQurDWyB$MnMXffzaOuqVchh~ZRF@NHh[6}9CMB9'UAQU|h~k</webp>
+</ImageNode>
+</CheckImageStep>
+</TestStep>
+</TestCase>
+<PackageRoot id="_3"/>
+<ExtraSequence id="_4"/>
+<WindowList id="_5">
+<WindowStep class="Window" engine="fx" feature="SCell Desktop Application :: &lt;new file&gt;" height="800"
+            id="winSCell_Desktop_Application_::_&lt;new_file&gt;" uid="_FR" width="1300">
+<extrafeature name="qfs:class" negate="false" regexp="false" state="0">javafx.stage.Stage</extrafeature>
+<extrafeature name="qfs:genericclass" negate="false" regexp="false" state="0">Window</extrafeature>
+<extrafeature name="qfs:labelBest" negate="false" regexp="false" state="0">SCell Desktop Application :: &lt;new file&gt;</extrafeature>
+<extrafeature name="qfs:labelTitle" negate="false" regexp="false" state="1">SCell Desktop Application :: &lt;new file&gt;</extrafeature>
+<extrafeature name="qfs:systemclass" negate="false" regexp="false" state="0">javafx.stage.Stage</extrafeature>
+<ComponentStep class="Panel" classcount="8" classindex="3" height="700" id="ITC_SCELL_MAIN_VIEW" name="ITC_SCELL_MAIN_VIEW" uid="_FS" width="1292" x="4" y="74">
+<extrafeature name="qfs:class" negate="false" regexp="false" state="0">com.intechcore.scell.integration.spreadsheet.MainView</extrafeature>
+<extrafeature name="qfs:genericclass" negate="false" regexp="false" state="0">Panel</extrafeature>
+<extrafeature name="qfs:systemclass" negate="false" regexp="false" state="0">javafx.scene.layout.StackPane</extrafeature>
+<ComponentStep class="Panel" classcount="1" classindex="0" height="700" id="MAIN_LAYOUT_CONTAINER" name="MAIN_LAYOUT_CONTAINER" uid="_FT" width="1292" x="0"
+               y="0">
+<extrafeature name="qfs:class" negate="false" regexp="false" state="0">javafx.scene.layout.VBox</extrafeature>
+<extrafeature name="qfs:genericclass" negate="false" regexp="false" state="0">Panel</extrafeature>
+<extrafeature name="qfs:systemclass" negate="false" regexp="false" state="0">javafx.scene.layout.VBox</extrafeature>
+<ComponentStep class="SplitPanel" classcount="1" classindex="0" height="700" id="ITC_SCELL_MAIN_SPLIT_CONTROLS_CONTAINER"
+               name="ITC_SCELL_MAIN_SPLIT_CONTROLS_CONTAINER" uid="_FU" width="1292" x="0" y="0">
+<extrafeature name="qfs:class" negate="false" regexp="false" state="0">javafx.scene.control.SplitPane</extrafeature>
+<extrafeature name="qfs:genericclass" negate="false" regexp="false" state="0">SplitPanel</extrafeature>
+<extrafeature name="qfs:systemclass" negate="false" regexp="false" state="0">javafx.scene.control.SplitPane</extrafeature>
+<extrafeature name="styleclass" negate="false" regexp="false" state="0">split-pane</extrafeature>
+<ComponentStep class="Panel" classcount="1" classindex="0" feature="Split: First" height="698" id="panelFirst" uid="_FV" width="1290" x="1" y="1">
+<extrafeature name="qfs:class" negate="false" regexp="false" state="0">javafx.scene.layout.StackPane</extrafeature>
+<extrafeature name="qfs:genericclass" negate="false" regexp="false" state="0">Panel</extrafeature>
+<extrafeature name="qfs:systemclass" negate="false" regexp="false" state="0">javafx.scene.layout.StackPane</extrafeature>
+<extrafeature name="qfs:type" negate="false" regexp="false" state="0">Panel:SplitPanelContent</extrafeature>
+<ComponentStep class="javafx.scene.layout.Region" classcount="1" classindex="0" height="698" id="ITC_SCELL_SPREADSHEET_VIEW" name="ITC_SCELL_SPREADSHEET_VIEW"
+               uid="_FW" width="1290" x="0" y="0">
+<extrafeature name="qfs:class" negate="false" regexp="false" state="0">com.intechcore.scell.integration.spreadsheet.SpreadsheetView</extrafeature>
+<extrafeature name="qfs:systemclass" negate="false" regexp="false" state="0">javafx.scene.layout.Region</extrafeature>
+<extrafeature name="styleclass" negate="false" regexp="false" state="0">spreadsheet scomponent</extrafeature>
+<ComponentStep class="javafx.scene.layout.Region" classcount="9" classindex="3" height="660" id="ITC_SCELL_WORKSHEET_VIEW" name="ITC_SCELL_WORKSHEET_VIEW"
+               uid="_FX" width="1313" x="-1" y="26">
+<extrafeature name="qfs:class" negate="false" regexp="false" state="0">com.intechcore.scell.integration.spreadsheet.WorksheetView</extrafeature>
+<extrafeature name="qfs:systemclass" negate="false" regexp="false" state="0">javafx.scene.layout.Region</extrafeature>
+<extrafeature name="styleclass" negate="false" regexp="false" state="0">worksheet</extrafeature>
+<ComponentStep class="Panel" classcount="3" classindex="0" height="631" id="ITC_SCELL_MAIN_SPREADSHEET_CONTAINER" name="ITC_SCELL_MAIN_SPREADSHEET_CONTAINER"
+               uid="_Fh" width="1237" x="33" y="20">
+<extrafeature name="qfs:class" negate="false" regexp="false" state="0">com.intechcore.scomponents.mvvm.oOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO.E</extrafeature>
+<extrafeature name="qfs:genericclass" negate="false" regexp="false" state="0">Panel</extrafeature>
+<extrafeature name="qfs:systemclass" negate="false" regexp="false" state="0">javafx.scene.layout.Pane</extrafeature>
+<extrafeature name="styleclass" negate="false" regexp="false" state="0">grid</extrafeature>
+<ComponentStep class="javafx.scene.layout.Region" classcount="4" classindex="1" height="186" id="ITC_SCELL_SELECTION_LAYER" name="ITC_SCELL_SELECTION_LAYER"
+               uid="_Fi" width="1030" x="0" y="0">
+<extrafeature name="qfs:class" negate="false" regexp="false" state="0">com.intechcore.scell.integration.spreadsheet.SelectionLayer</extrafeature>
+<extrafeature name="qfs:systemclass" negate="false" regexp="false" state="0">javafx.scene.layout.Region</extrafeature>
+<extrafeature name="styleclass" negate="false" regexp="false" state="0">selection</extrafeature>
+</ComponentStep>
+<ComponentStep class="Panel" classcount="2" classindex="0" height="631" id="ITC_SCELL_CONTENT_RENDERER_CONTAINER" name="ITC_SCELL_CONTENT_RENDERER_CONTAINER"
+               uid="_Fl" width="1237" x="1" y="1">
+<extrafeature name="qfs:class" negate="false" regexp="false" state="0">javafx.scene.layout.Pane</extrafeature>
+<extrafeature name="qfs:genericclass" negate="false" regexp="false" state="0">Panel</extrafeature>
+<extrafeature name="qfs:systemclass" negate="false" regexp="false" state="0">javafx.scene.layout.Pane</extrafeature>
+<ComponentStep class="Panel" classcount="2" classindex="0" height="546" id="ITC_SCELL_CANVAS_TILE_CONTAINER_A1" name="ITC_SCELL_CANVAS_TILE_CONTAINER_A1"
+               uid="_Fm" width="1790" x="0" y="0">
+<extrafeature name="qfs:class" negate="false" regexp="false" state="0">com.intechcore.scell.integration.spreadsheet.grid.renderer.VectorPaneRenderer</extrafeature>
+<extrafeature name="qfs:genericclass" negate="false" regexp="false" state="0">Panel</extrafeature>
+<extrafeature name="qfs:systemclass" negate="false" regexp="false" state="0">javafx.scene.layout.Pane</extrafeature>
+</ComponentStep>
+<ComponentStep class="Panel" classcount="2" classindex="1" height="546" id="ITC_SCELL_CANVAS_TILE_CONTAINER_A28" name="ITC_SCELL_CANVAS_TILE_CONTAINER_A28"
+               uid="_G3" width="1790" x="0" y="540">
+<extrafeature name="qfs:class" negate="false" regexp="false" state="0">com.intechcore.scell.integration.spreadsheet.grid.renderer.VectorPaneRenderer</extrafeature>
+<extrafeature name="qfs:genericclass" negate="false" regexp="false" state="0">Panel</extrafeature>
+<extrafeature name="qfs:systemclass" negate="false" regexp="false" state="0">javafx.scene.layout.Pane</extrafeature>
+</ComponentStep>
+</ComponentStep>
+</ComponentStep>
+</ComponentStep>
+<ComponentStep class="Panel" classcount="6" classindex="1" height="22" id="ITC_SCELL_INPUT_BAR" name="ITC_SCELL_INPUT_BAR" uid="_Fe" width="1287" x="-1" y="2">
+<extrafeature name="qfs:class" negate="false" regexp="false" state="0">com.intechcore.scomponents.mvvm.super.A</extrafeature>
+<extrafeature name="qfs:genericclass" negate="false" regexp="false" state="0">Panel</extrafeature>
+<extrafeature name="qfs:systemclass" negate="false" regexp="false" state="0">javafx.scene.layout.Pane</extrafeature>
+<extrafeature name="styleclass" negate="false" regexp="false" state="0">scomponent-formula-input-bar-canvas</extrafeature>
+</ComponentStep>
+</ComponentStep>
+</ComponentStep>
+</ComponentStep>
+</ComponentStep>
+</ComponentStep>
+</WindowStep>
+</WindowList>
+</RootStep>

@@ -1,0 +1,657 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE RootStep>
+<RootStep id="_0" indentation="0" linelength="160" name="root" version="9.0.5">
+<include>qfs.qft</include>
+<variable name="appdir"/>
+<variable name="java">${system:java.home}/bin/java</variable>
+<variable name="fxlibs">${system:java.home}/javafx/lib</variable>
+<variable name="scell.desktop.class.name">com.intechcore.scell.app.DesktopApp</variable>
+<variable name="args">--maximized=false</variable>
+<variable name="client">scell</variable>
+<comment>		</comment>
+<DependencyReference id="_8q" reference="scellib.init.startScell"/>
+<PackageRoot id="_3">
+<Package id="_Lm" name="scellib">
+<Package id="_LL" name="ui">
+<Package id="_Ls" name="spec">
+<Procedure id="_CZ" name="getCellTextViaClipboardOfInputBar">
+<variable name="cell_address">A1</variable>
+<ProcedureCall id="_Lr" procedure="scellib.ui.clickCell">
+<variable name="cell_address">$(cell_address)</variable>
+</ProcedureCall>
+<KeyEventStep client="$(client)" component="ITC_SCELL_INPUT_BAR" event="KEY_PTR" id="_Cb" keychar="1" keycode="65" modifiers="2"/>
+<KeyEventStep client="$(client)" component="ITC_SCELL_INPUT_BAR" event="KEY_PTR" id="_Cc" keychar="3" keycode="67" modifiers="2"/>
+<ProcedureCall id="_Cd" local="true" procedure="qfs.utils.clipboard.getTextFromClipboard" retvarname="text"/>
+<KeyEventStep client="$(client)" component="ITC_SCELL_INPUT_BAR" event="KEY_PTR" id="_Ce" keychar="27" keycode="27" modifiers="0"/>
+<ReturnStep id="_Cf" retval="$(text)"/>
+</Procedure>
+</Package>
+<Procedure id="_GM" name="clickCell">
+<variable name="cell_address">A1</variable>
+<MouseEventStep clicks="1" client="$(client)" component="ITC_SCELL_CONTENT_RENDERER_CONTAINER@$(cell_address)" event="MOUSE_MPRC" id="_GR" modifiers="16"/>
+</Procedure>
+<Procedure id="_KM" name="doubleClickCell">
+<variable name="cell_address">A2</variable>
+<MouseEventStep clicks="1" client="$(client)" component="ITC_SCELL_CONTENT_RENDERER_CONTAINER@$(cell_address)" event="MOUSE_DBLCLK" id="_KN" modifiers="16"/>
+</Procedure>
+<Procedure id="_Jv" name="inputTextViaCellEditor">
+<variable name="cell_address">A&amp;1</variable>
+<variable name="text">Via Cell Editor</variable>
+<variable name="clear">true</variable>
+<ProcedureCall id="_KP" procedure="scellib.ui.doubleClickCell">
+<variable name="cell_address">$(cell_address)</variable>
+</ProcedureCall>
+<IfSequence id="_KQ" test="$(clear)">
+<KeyEventStep client="$(client)" component="#Panel:name=ITC_SCELL_CELL_TEXT_EDITOR" event="KEY_PTR" id="_KG" keychar="1" keycode="65" modifiers="2"/>
+</IfSequence>
+<TextInputStep clear="true" client="$(client)" component="#Panel:name=ITC_SCELL_CELL_TEXT_EDITOR" id="_KF">
+<text>$(text)</text>
+</TextInputStep>
+<KeyEventStep client="$(client)" component="#Panel:name=ITC_SCELL_CELL_TEXT_EDITOR" event="KEY_PTR" id="_KH" keychar="10" keycode="10" modifiers="0"/>
+</Procedure>
+<Procedure id="_B6" name="inputTextViaInputBar">
+<variable name="cell_address">A&amp;2</variable>
+<variable name="text">Via Input Bar</variable>
+<variable name="clear">true</variable>
+<variable name="hard">true</variable>
+<ProcedureCall id="_Ga" local="true" procedure="scellib.ui.clickCell">
+<variable name="cell_address">$(cell_address)</variable>
+</ProcedureCall>
+<IfSequence id="_BF" test="$(clear)">
+<KeyEventStep client="$(client)" component="ITC_SCELL_WORKSHEET_VIEW" event="KEY_PTR" id="_BH" keychar="127" keycode="127" modifiers="0"/>
+</IfSequence>
+<TextInputStep clear="true" client="$(client)" component="ITC_SCELL_INPUT_BAR" id="_B4">
+<text>$(text)</text>
+</TextInputStep>
+<KeyEventStep client="$(client)" component="ITC_SCELL_INPUT_BAR" event="KEY_PTR" id="_B5" keychar="13" keycode="10" modifiers="0"/>
+</Procedure>
+</Package>
+<Package id="_Lh" name="api">
+<Procedure id="_KW" name="getCellText">
+<variable name="cell_address">A1</variable>
+<ClientScriptStep client="$(client)" id="_Kj" interpreter="groovy">
+<code>String cellAddr = rc.getStr("cell_address")
+String result = ScellApiWrapper.get().getCellValue(cellAddr)
+rc.setLocal("result", result)
+println "getCellText() : $cellAddr -&gt; $result"
+
+</code>
+</ClientScriptStep>
+<ReturnStep cast="string" id="_Ko" retval="$(result)"/>
+</Procedure>
+<Procedure id="_Kt" name="checkCellValue">
+<variable name="cell_address">${as:string:A1}</variable>
+<variable name="expected">${as:string:A1}</variable>
+<variable name="message">Value on cell $(cell_address) shoul be equal "$(expected)", but it is "$_(actual)"</variable>
+<ProcedureCall id="_L4" procedure="scellib.api.getCellText" retvarname="actual"/>
+<ProcedureCall id="_LJ" procedure="scellib.checkValue">
+<variable name="expected">$(expected)</variable>
+<variable name="actual">$(actual)</variable>
+<variable name="message">$(message)</variable>
+</ProcedureCall>
+</Procedure>
+</Package>
+<Package id="_LK" name="init">
+<Dependency id="_8m" name="startScell">
+<SetupSequence id="_6" name="Start SCell">
+<ClientWaiter client="$(client)" id="_8" local="true" raise="false" resvarname="isSUTRunning" timeout="0"/>
+<IfSequence id="_9" name="SUT starten, wenn notwendig" test="not $(isSUTRunning)">
+<SUTClientStarter client="$(client)" directory="${qftest:project.dir}" executable="$(java)" id="_A">
+<parameter>--module-path</parameter>
+<parameter>$(fxlibs)</parameter>
+<parameter>--add-modules</parameter>
+<parameter>ALL-MODULE-PATH</parameter>
+<parameter>--add-exports</parameter>
+<parameter>javafx.base/com.sun.javafx.runtime=ALL-UNNAMED</parameter>
+<parameter>-cp</parameter>
+<parameter>$(appdir)/*</parameter>
+<parameter>$(scell.desktop.class.name)</parameter>
+<parameter>$(args)</parameter>
+</SUTClientStarter>
+<SUTClientStarter client="$(client)" directory="$(appdir)" disabled="true" executable="SCell.exe" id="_Ci"/>
+<ClientWaiter client="$(client)" id="_B" timeout="30000"/>
+<ComponentEventStep client="$(client)" component="#" event="COMPONENT_MOVED" id="_8r" param1="10" param2="10"/>
+<ComponentEventStep client="$(client)" component="#" event="COMPONENT_RESIZED" id="_8-" param1="1300" param2="800"/>
+<ProcedureCall id="_Bi" procedure="scellib.init.registerResolvers"/>
+<ProcedureCall id="_PN" procedure="scellib.utils.saveScellVersionToFile"/>
+</IfSequence>
+</SetupSequence>
+<CleanupSequence id="_8z">
+<TryStep id="_9Z">
+<WindowEventStep client="$(client)" component="#" event="WINDOW_CLOSING" id="_8+"/>
+<ProcessWaiter client="$(client)" id="_91"/>
+<CatchSequence exception="ClientNotConnectedException" id="_9a" maxerror="0"/>
+<CatchSequence exception="TestException" id="_Ay" maxerror="0">
+<ClientStopper client="$(client)" id="_A+"/>
+<ProcessWaiter client="$(client)" id="_Az"/>
+</CatchSequence>
+</TryStep>
+</CleanupSequence>
+</Dependency>
+<Procedure id="_A-" name="registerResolvers">
+<ClientScriptStep client="$(client)" id="_GL" interpreter="groovy" name="SpreadsheetCellResolver">
+<code>import de.qfs.apps.qftest.extensions.items.ItemResolver
+import de.qfs.apps.qftest.extensions.items.ItemRegistry
+import de.qfs.apps.qftest.extensions.ResolverRegistry
+import de.qfs.apps.qftest.extensions.RedirectResolver
+
+import de.qfs.apps.qftest.shared.data.SubItemIndex
+
+import de.qfs.apps.qftest.client.Client
+import de.qfs.apps.qftest.client.Engine
+
+import de.qfs.lib.util.Pair
+import de.qfs.lib.log.Log
+import de.qfs.lib.log.Logger
+
+import java.util.HashMap;
+import java.util.ArrayList;
+
+import javafx.scene.Node
+import javafx.geometry.Orientation
+
+import com.intechcore.scomponents.scell.api.IScellApiResolver
+import com.intechcore.scomponents.scell.api.fx.IScellUiApi
+import com.intechcore.scomponents.scell.api.fx.ScellControlStorage
+import com.intechcore.scomponents.scell.api.init.ScellApiEntryPoint
+import com.intechcore.scomponents.scell.api.spreadsheet.model.address.IRangeAddress
+import com.intechcore.scomponents.scell.api.spreadsheet.service.builder.IRangeAddressBuilder
+import com.intechcore.scomponents.scell.api.spreadsheet.model.data.IProductInfo
+
+public class Ids {
+    static String TILE_ITEM_CLASS = "com.intechcore.scell.integration.spreadsheet.grid.renderer.ContentOutputContainer"
+
+    static String CONTENT_CONTAINER_ID = "ITC_SCELL_CONTENT_RENDERER_CONTAINER"
+    static String SELECTION_CONTAINER_ID = "ITC_SCELL_SELECTION_LAYER"
+    static String ROWS_SCROLLBAR_ID = "ITC_SCELL_WORKSHEET_ROWS_SCROLLBAR"
+    static String COLUMNS_SCROLLBAR_ID = "ITC_SCELL_WORKSHEET_COLUMNS_SCROLLBAR"
+}
+
+public class ScellApiWrapper {
+
+    public final IScellApiResolver resolver
+    public final IScellUiApi&lt;Node&gt; scellUiApi
+
+    private ScellApiWrapper() {
+        this.scellUiApi = ScellControlStorage.getFxControl(0).get()
+        this.resolver = this.scellUiApi.getContentManager().getWorkbook().getResolver()
+    }
+
+    public IRangeAddressBuilder createAddressBuilder() {
+        return IRangeAddressBuilder.resolve(this.resolver)
+    }
+
+    public String getCellValue(String cellAddress) {
+        return this.scellUiApi.getContentManager().getActiveWorksheet().getValueService().get(cellAddress).asString()
+    }
+
+    public IRangeAddress parseCellAddress(String cellAddress) {
+        return this.createAddressBuilder().fromA1String(cellAddress).buildCell()
+    }
+
+    public String getVersion() {
+        this.resolver.resolve(IProductInfo.class).coreImpl(null)
+    }
+    
+    public static ScellApiWrapper get() {
+        return Holder.INSTANCE
+    }
+ 
+    private static class Holder {
+        public static ScellApiWrapper INSTANCE = new ScellApiWrapper()
+    }
+}
+
+public class SpreadsheetCellResolver implements ItemResolver
+{
+    static Logger logger = new Logger("de.qfs.apps.qftest.extensions.items.SpreadsheetCellResolver")
+
+    def fxEngine
+    def rc
+
+    public SpreadsheetCellResolver(Object fxEngine, Object rc)
+    {
+        if (logger.level &gt;= Log.MTD) {
+            def lb = logger.build("SpreadsheetCellResolver()")
+            lb.log(Log.MTD)
+        }
+        this.fxEngine = fxEngine
+        this.rc = rc
+    }
+
+    // --------------
+    // implementation of ItemResolver::getItem
+    // --------------
+    public Object getItem(Object com, int x, int y)
+    {
+        println "getItem =============== :: $com :: [$x,$y]"
+        def rangeAddress = ScellApiWrapper.get().scellUiApi.getGridMetrics().getVisibleCellAddress(x, y)
+        String cellName = rangeAddress.toA1String()
+        println "============== getItem :: cellName"
+        return cellName
+    }
+
+    // --------------
+    // implementation of ItemResolver::getItemValue
+    // --------------
+    public String getItemValue(Object com, Object item)
+    {
+        println "getItemValue =========== :: $com :: $item"
+        def result = "cell value"
+        println "=========== getItemValue :: $result"
+        return result
+    }
+
+    // --------------
+    // implementation of ItemResolver::getItemIndex
+    // --------------
+    public SubItemIndex[] getItemIndex(Object com, Object item, int itemtype)
+    {
+        SubItemIndex[] idx = new SubItemIndex[2]
+        def m = item =~ /([A-Z]+)(\d+)/
+        if (m) {
+            idx[0] = new SubItemIndex(m.group(1))
+            idx[1] = new SubItemIndex(m.group(2) as int)            
+            return idx
+        }
+    }
+
+    // --------------
+    // implementation of ItemResolver::getItemForIndex
+    // --------------
+    public Object getItemForIndex(Object com, SubItemIndex[] idx)
+    {
+        println "getItemForIndex ======================== :: $idx"
+
+        if (idx.length == 1) {
+            ItemRegistry.instance("fx").setIndexesResolved(1)
+            return idx[0].getIndex()
+        }
+
+        if (idx.length == 2) {
+            def colIdx = idx[0].getIndex()
+            def rowIdx = idx[1].asNumber()
+            String item = colIdx + rowIdx
+            ItemRegistry.instance("fx").setIndexesResolved(2)
+            println "======================== getItemForIndex :: $colIdx + $rowIdx = $item"
+            return item
+        }
+
+        throw new IndexNotFoundException(idx)
+    }
+
+    // --------------
+    // implementation of ItemResolver::getItemLocation
+    // --------------
+    public int[] getItemLocation(Object com, Object item)
+    {
+        println "getItemLocation =============== :: $com :: $item";
+        def address = ScellApiWrapper.get().parseCellAddress(item)
+        int col = address.getLeftColumnNumber()
+        int row = address.getTopRowNumber()
+
+        def gridMetrics = ScellApiWrapper.get().scellUiApi.getGridMetrics()
+        int x = (int) gridMetrics.getColumnLeftXCoordinate(col)
+        int y = (int) gridMetrics.getRowTopYCoordinate(row)
+
+        def itemLoc = [x, y] as int[]
+
+        println "============ getItemLocation :: [$x,$y] =&gt; $itemLoc :: $address"
+
+        return itemLoc
+    }
+
+    // --------------
+    // implementation of ItemResolver::getItemSize
+    // --------------
+    public int[] getItemSize(Object com, Object item)
+    {
+        def address = ScellApiWrapper.get().parseCellAddress(item)
+        int col = address.getLeftColumnNumber()
+        int row = address.getTopRowNumber()
+        def gridMetrics = ScellApiWrapper.get().scellUiApi.getGridMetrics()
+        int left = (int) gridMetrics.getColumnLeftXCoordinate(col)
+        int top = (int) gridMetrics.getRowTopYCoordinate(row)
+        int right = (int) gridMetrics.getColumnRightXCoordinate(col)
+        int bottom = (int) gridMetrics.getRowBottomYCoordinate(row)
+        return [right - left, bottom - top] as int[]
+    }
+
+    // --------------
+    // implementation of ItemResolver::scrollItemVisible
+    // --------------
+    public Boolean scrollItemVisible(Object com, Object item, int x, int y)
+    {
+        scrollItem(com, item, this.rc.getComponent(Ids.ROWS_SCROLLBAR_ID))
+        scrollItem(com, item, this.rc.getComponent(Ids.COLUMNS_SCROLLBAR_ID))
+        return true
+    }
+
+    // --------------
+    // implementation of ItemResolver::getItemCount
+    // --------------
+    public int getItemCount(Object com, Object item)
+    {
+        return 0
+    }
+
+    // --------------
+    // implementation of ItemResolver::repositionMouseEvent
+    // --------------
+    public Boolean repositionMouseEvent(Object com, Object item, int[] pos)
+    {
+        Boolean repos = Boolean.FALSE
+        if (item != null &amp;&amp; pos[0] &gt;= 0 &amp;&amp; pos[1] &gt;= 0) {
+            if (Client.instance().getOptions().getBoolean("RepositionMiddle", true)) {
+                pos[0] = Integer.MAX_VALUE
+                pos[1] = Integer.MAX_VALUE
+            } else {
+                pos[0] = Math.min(pos[0], 1)
+                pos[1] = Math.min(pos[1], 1)
+            }
+            repos = Boolean.TRUE
+        }
+        return repos
+    }
+
+    private static void scrollItem(Object canvas, String item, Object scrollBar)
+    {
+        println "scrollItem :: $item :: $scrollBar ====================="
+        int idx
+        int[] range
+
+        def address = ScellApiWrapper.get().parseCellAddress(item)
+        if (scrollBar.getOrientation() == Orientation.VERTICAL) {
+            idx = address.getTopRowNumber()
+            range = getVisibleRowRange(canvas)
+        } else {
+            idx = address.getLeftColumnNumber()
+            range = getVisibleColRange(canvas)
+        }
+
+        int value
+        if (idx &lt; range[0]) {
+            value = Math.max(scrollBar.getMin(), idx - 1)
+        } else if (idx &gt;= range[1]) {
+            value = idx - 1
+        }
+        scrollBar.setValue(value)
+        println "===================== scrollItem :: $value"
+    }
+}
+
+public class ScellTilesRedirector implements RedirectResolver
+{
+    static Logger logger = new Logger("de.qfs.apps.qftest.extensions.items.ScellTilesRedirector")
+
+    private final Object target;
+
+    public ScellTilesRedirector(Object target) {
+        if (logger.level &gt;= Log.MTD) {
+            def lb = logger.build("ScellTilesRedirector()")
+            lb.log(Log.MTD)
+        }
+
+        this.target = target
+    }
+
+    public Object shouldRedirect(Object com, int[] pos)
+    {
+        println "shouldRedirect ======== $com :: $pos"
+        def bnds = com.getBoundsInParent()
+        pos[0] += (int) bnds.minX
+        pos[1] += (int) bnds.minY
+        println "========= shouldRedirect : $this.target :: $pos"
+        return this.target
+    }
+}
+
+public class WtfRegistrator {
+    def itemResolver = ItemRegistry.instance("fx")
+    def resolverRegistry = ResolverRegistry.instance("fx")
+    
+    static ArrayList&lt;Pair&lt;ItemResolver, Object&gt;&gt; itemResolvers = new ArrayList&lt;&gt;()
+    static ArrayList&lt;Pair&lt;RedirectResolver, Object&gt;&gt; redirectResolvers = new ArrayList&lt;&gt;()
+
+    //def cr = CheckerRegistry.instance("fx")
+
+    public &lt;TTarget&gt; void registerItemResolver(TTarget target, ItemResolver handler) {
+        this.itemResolver.registerItemResolver(target, handler)
+        itemResolvers.add(new Pair&lt;&gt;(handler, target))
+        println "Register ItemResolver: $handler :: $target"
+        println "size: " + itemResolvers.size()
+    }
+    
+    public void registerRedirectResolver(RedirectResolver handler, Object... targets) {
+        for (int i = 0; i &lt; targets.length; i++) {
+            Object targetClass = targets[i]
+
+            this.resolverRegistry.registerRedirectResolver(targetClass, handler)
+            redirectResolvers.add(new Pair&lt;&gt;(handler, targetClass))
+            println "Register RedirectResolver: $handler :: $targetClass"            
+        }
+
+        println "size: " + redirectResolvers.size()
+    }
+    public void unregister() {
+        println "unregister"
+        for (pair : itemResolvers) {
+            println "Unregistered: $pair"
+            this.itemResolver.unregisterItemResolver(pair.getSecond(), pair.getFirst())
+        }
+
+        for (pair : itemResolvers) {
+            println "Unregistered: $pair"
+            this.itemResolver.unregisterItemResolver(pair.getSecond(), pair.getFirst())
+        }
+        itemResolvers.clear()
+    }
+
+    public static class Holder {
+        public static WtfRegistrator INSTANCE = new WtfRegistrator()
+    }
+}
+
+
+WtfRegistrator registry = WtfRegistrator.Holder.INSTANCE
+
+try {
+    registry.unregister() // this is not working
+} catch (Exception ex) {
+}
+
+def fxHelper = Engine.instance("fx").getHelper()
+
+def mainContainerComponent = rc.getComponent(Ids.CONTENT_CONTAINER_ID)
+cellResolver = new SpreadsheetCellResolver(fxHelper, rc)
+registry.registerItemResolver(mainContainerComponent, cellResolver)
+registry.registerRedirectResolver(new ScellTilesRedirector(mainContainerComponent), Ids.TILE_ITEM_CLASS, rc.getComponent(Ids.SELECTION_CONTAINER_ID))
+
+def version = ScellApiWrapper.get().getVersion()
+println "Version: " + version
+rc.groups.env.SCELL_VERSION = version
+
+println "Version: " + rc.groups.env.SCELL_VERSION</code>
+</ClientScriptStep>
+</Procedure>
+<Procedure id="_CK" name="unregisterResolvers">
+<ClientScriptStep client="$(client)" id="_CO" interpreter="groovy" name="SpreadsheetCellResolver-Cleanup">
+<code>try {
+    registry.unregister()
+    binding.variables.remove("registry")
+} catch (MissingPropertyException ex) {}</code>
+</ClientScriptStep>
+</Procedure>
+</Package>
+<Package id="_Cn" name="toolbar">
+<Procedure id="_Co" name="clickButton">
+<variable name="group"/>
+<variable name="item"/>
+<comment>Select an entry in the tool bar based on labels (tool tips).
+
+@param	group	The group which the item belongs to.
+@param	item	The item to be selected.
+
+@author	QFS
+@since	8.0.2</comment>
+<IfSequence id="_Cz" test="&#34;$(group)&#34;">
+<ComponentWaiter client="$(client)" component="#%javafx.scene.control.Labeled:feature=$(group)" id="_Cv" local="true" raise="false" resvarname="isVisible"
+                 timeout="0">
+<comment>@scope #ToolBar:</comment>
+</ComponentWaiter>
+<IfSequence id="_Cy" test="not $(isVisible)">
+<MouseEventStep clicks="1" client="$(client)" component="#Panel:styleclass=tool-bar-overflow-button" event="MOUSE_MPRC" id="_N" modifiers="16">
+<comment>@scope #ToolBar:</comment>
+</MouseEventStep>
+</IfSequence>
+<MouseEventStep clicks="1" client="$(client)" component="#%javafx.scene.control.Labeled:feature=$(group)" event="MOUSE_MPRC" id="_C+" modifiers="16"/>
+</IfSequence>
+<ComponentWaiter client="$(client)" component="#%javafx.scene.control.Labeled:feature=$(item)" id="_D5" local="true" raise="false" resvarname="isVisible"
+                 timeout="0"/>
+<IfSequence id="_D6" test="not $(isVisible)">
+<MouseEventStep clicks="1" client="$(client)" component="#Panel:styleclass=tool-bar-overflow-button" event="MOUSE_MPRC" id="_D7" modifiers="16">
+<comment>@scope #ToolBar:</comment>
+</MouseEventStep>
+</IfSequence>
+<MouseEventStep clicks="1" client="$(client)" component="#%javafx.scene.control.Labeled:feature=$(item)" event="MOUSE_MPRC" id="_D9" modifiers="16"/>
+</Procedure>
+</Package>
+<Package id="_Lt" name="utils">
+<Procedure id="_PF" name="saveScellVersionToFile">
+<ProcedureCall id="_PK" procedure="qfs.shellutils.mkdir">
+<variable name="directory">${qftest:project.dir}/.tmp</variable>
+</ProcedureCall>
+<FetchTextStep client="$(client)" component="#Label:name=APP_VERSION" id="_PW" varname="app_version"/>
+<FetchTextStep client="$(client)" component="#Label:name=SCELL_API_FULL_VERSION" id="_PX" varname="api_version"/>
+<FetchTextStep client="$(client)" component="#Label:name=TOOLBAR_VERSION" id="_PY" varname="toolbar_version"/>
+<ClientScriptStep client="$(client)" id="_PL" interpreter="groovy">
+<code>String content = rc.getStr("app_version") + rc.getStr("api_version") + rc.getStr("toolbar_version")
+rc.setLocal("text", content)</code>
+</ClientScriptStep>
+<ProcedureCall id="_PM" procedure="scellib.utils.saveTextToFile">
+<variable name="targetFilePath">.tmp/scell-version.txt</variable>
+<variable name="text">$(text)</variable>
+</ProcedureCall>
+</Procedure>
+<Procedure id="_Lu" name="saveTextToFile">
+<variable name="targetFolderPath">${qftest:project.dir}</variable>
+<variable name="targetFilePath">scell-lib-saveTextToFile-Default-Output.txt</variable>
+<variable name="text">test content</variable>
+<ServerScriptStep id="_M2" interpreter="groovy">
+<code>import java.io.IOException
+import java.nio.file.Files
+import java.nio.file.Path
+import java.nio.file.Paths
+
+String targetFolder = rc.getStr("targetFolderPath")
+String targetFilePath = rc.getStr("targetFilePath")
+String text = rc.getStr("text")
+
+Path targetFile = Paths.get(targetFolder + "/" + targetFilePath);
+
+try {
+    Files.writeString(targetFile, text);
+} catch (IOException e) {
+     rc.logMessage("Error writing to file: " + e.getMessage());
+}</code>
+</ServerScriptStep>
+</Procedure>
+</Package>
+<Procedure id="_L9" name="checkValue">
+<variable name="expected">test_value</variable>
+<variable name="actual">test_value2</variable>
+<variable name="message">Actual value "$(actual)" not equal expected "$(expected)"</variable>
+<ClientScriptStep client="$(client)" id="_LI" interpreter="groovy">
+<code>def expected = rc.getStr("expected")
+def actual = rc.getStr("actual")
+String message = rc.getStr("message")
+rc.checkEqual(actual, expected, message)</code>
+</ClientScriptStep>
+</Procedure>
+</Package>
+</PackageRoot>
+<ExtraSequence id="_4"/>
+<WindowList id="_5">
+<WindowStep class="Window" engine="fx" feature="SCell Desktop Application :: &lt;new file&gt;" height="800"
+            id="winSCell_Desktop_Application_::_&lt;new_file&gt;" uid="_FR" width="1300">
+<extrafeature name="qfs:class" negate="false" regexp="false" state="0">javafx.stage.Stage</extrafeature>
+<extrafeature name="qfs:genericclass" negate="false" regexp="false" state="0">Window</extrafeature>
+<extrafeature name="qfs:labelBest" negate="false" regexp="false" state="0">SCell Desktop Application :: &lt;new file&gt;</extrafeature>
+<extrafeature name="qfs:labelTitle" negate="false" regexp="false" state="1">SCell Desktop Application :: &lt;new file&gt;</extrafeature>
+<extrafeature name="qfs:systemclass" negate="false" regexp="false" state="0">javafx.stage.Stage</extrafeature>
+<ComponentStep class="Panel" classcount="8" classindex="3" height="700" id="ITC_SCELL_MAIN_VIEW" name="ITC_SCELL_MAIN_VIEW" uid="_FS" width="1292" x="4" y="74">
+<extrafeature name="qfs:class" negate="false" regexp="false" state="0">com.intechcore.scell.integration.spreadsheet.MainView</extrafeature>
+<extrafeature name="qfs:genericclass" negate="false" regexp="false" state="0">Panel</extrafeature>
+<extrafeature name="qfs:systemclass" negate="false" regexp="false" state="0">javafx.scene.layout.StackPane</extrafeature>
+<ComponentStep class="Panel" classcount="1" classindex="0" height="700" id="MAIN_LAYOUT_CONTAINER" name="MAIN_LAYOUT_CONTAINER" uid="_FT" width="1292" x="0"
+               y="0">
+<extrafeature name="qfs:class" negate="false" regexp="false" state="0">javafx.scene.layout.VBox</extrafeature>
+<extrafeature name="qfs:genericclass" negate="false" regexp="false" state="0">Panel</extrafeature>
+<extrafeature name="qfs:systemclass" negate="false" regexp="false" state="0">javafx.scene.layout.VBox</extrafeature>
+<ComponentStep class="SplitPanel" classcount="1" classindex="0" height="700" id="ITC_SCELL_MAIN_SPLIT_CONTROLS_CONTAINER"
+               name="ITC_SCELL_MAIN_SPLIT_CONTROLS_CONTAINER" uid="_FU" width="1292" x="0" y="0">
+<extrafeature name="qfs:class" negate="false" regexp="false" state="0">javafx.scene.control.SplitPane</extrafeature>
+<extrafeature name="qfs:genericclass" negate="false" regexp="false" state="0">SplitPanel</extrafeature>
+<extrafeature name="qfs:systemclass" negate="false" regexp="false" state="0">javafx.scene.control.SplitPane</extrafeature>
+<extrafeature name="styleclass" negate="false" regexp="false" state="0">split-pane</extrafeature>
+<ComponentStep class="Panel" classcount="1" classindex="0" feature="Split: First" height="698" id="panelFirst" uid="_FV" width="1290" x="1" y="1">
+<extrafeature name="qfs:class" negate="false" regexp="false" state="0">javafx.scene.layout.StackPane</extrafeature>
+<extrafeature name="qfs:genericclass" negate="false" regexp="false" state="0">Panel</extrafeature>
+<extrafeature name="qfs:systemclass" negate="false" regexp="false" state="0">javafx.scene.layout.StackPane</extrafeature>
+<extrafeature name="qfs:type" negate="false" regexp="false" state="0">Panel:SplitPanelContent</extrafeature>
+<ComponentStep class="javafx.scene.layout.Region" classcount="1" classindex="0" height="698" id="ITC_SCELL_SPREADSHEET_VIEW" name="ITC_SCELL_SPREADSHEET_VIEW"
+               uid="_FW" width="1290" x="0" y="0">
+<extrafeature name="qfs:class" negate="false" regexp="false" state="0">com.intechcore.scell.integration.spreadsheet.SpreadsheetView</extrafeature>
+<extrafeature name="qfs:systemclass" negate="false" regexp="false" state="0">javafx.scene.layout.Region</extrafeature>
+<extrafeature name="styleclass" negate="false" regexp="false" state="0">spreadsheet scomponent</extrafeature>
+<ComponentStep class="javafx.scene.layout.Region" classcount="9" classindex="3" height="660" id="ITC_SCELL_WORKSHEET_VIEW" name="ITC_SCELL_WORKSHEET_VIEW"
+               uid="_FX" width="1313" x="-1" y="26">
+<extrafeature name="qfs:class" negate="false" regexp="false" state="0">com.intechcore.scell.integration.spreadsheet.WorksheetView</extrafeature>
+<extrafeature name="qfs:systemclass" negate="false" regexp="false" state="0">javafx.scene.layout.Region</extrafeature>
+<extrafeature name="styleclass" negate="false" regexp="false" state="0">worksheet</extrafeature>
+<ComponentStep class="Panel" classcount="3" classindex="0" height="631" id="ITC_SCELL_MAIN_SPREADSHEET_CONTAINER" name="ITC_SCELL_MAIN_SPREADSHEET_CONTAINER"
+               uid="_Fh" width="1237" x="33" y="20">
+<extrafeature name="qfs:class" negate="false" regexp="false" state="0">com.intechcore.scomponents.mvvm.oOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO.E</extrafeature>
+<extrafeature name="qfs:genericclass" negate="false" regexp="false" state="0">Panel</extrafeature>
+<extrafeature name="qfs:systemclass" negate="false" regexp="false" state="0">javafx.scene.layout.Pane</extrafeature>
+<extrafeature name="styleclass" negate="false" regexp="false" state="0">grid</extrafeature>
+<ComponentStep class="javafx.scene.layout.Region" classcount="4" classindex="1" height="186" id="ITC_SCELL_SELECTION_LAYER" name="ITC_SCELL_SELECTION_LAYER"
+               uid="_Fi" width="1030" x="0" y="0">
+<extrafeature name="qfs:class" negate="false" regexp="false" state="0">com.intechcore.scell.integration.spreadsheet.SelectionLayer</extrafeature>
+<extrafeature name="qfs:systemclass" negate="false" regexp="false" state="0">javafx.scene.layout.Region</extrafeature>
+<extrafeature name="styleclass" negate="false" regexp="false" state="0">selection</extrafeature>
+</ComponentStep>
+<ComponentStep class="Panel" classcount="2" classindex="0" height="631" id="ITC_SCELL_CONTENT_RENDERER_CONTAINER" name="ITC_SCELL_CONTENT_RENDERER_CONTAINER"
+               uid="_Fl" width="1237" x="1" y="1">
+<extrafeature name="qfs:class" negate="false" regexp="false" state="0">javafx.scene.layout.Pane</extrafeature>
+<extrafeature name="qfs:genericclass" negate="false" regexp="false" state="0">Panel</extrafeature>
+<extrafeature name="qfs:systemclass" negate="false" regexp="false" state="0">javafx.scene.layout.Pane</extrafeature>
+<ComponentStep class="Panel" classcount="2" classindex="0" height="546" id="ITC_SCELL_CANVAS_TILE_CONTAINER_A1" name="ITC_SCELL_CANVAS_TILE_CONTAINER_A1"
+               uid="_Fm" width="1790" x="0" y="0">
+<extrafeature name="qfs:class" negate="false" regexp="false" state="0">com.intechcore.scell.integration.spreadsheet.grid.renderer.VectorPaneRenderer</extrafeature>
+<extrafeature name="qfs:genericclass" negate="false" regexp="false" state="0">Panel</extrafeature>
+<extrafeature name="qfs:systemclass" negate="false" regexp="false" state="0">javafx.scene.layout.Pane</extrafeature>
+</ComponentStep>
+<ComponentStep class="Panel" classcount="2" classindex="1" height="546" id="ITC_SCELL_CANVAS_TILE_CONTAINER_A28" name="ITC_SCELL_CANVAS_TILE_CONTAINER_A28"
+               uid="_G3" width="1790" x="0" y="540">
+<extrafeature name="qfs:class" negate="false" regexp="false" state="0">com.intechcore.scell.integration.spreadsheet.grid.renderer.VectorPaneRenderer</extrafeature>
+<extrafeature name="qfs:genericclass" negate="false" regexp="false" state="0">Panel</extrafeature>
+<extrafeature name="qfs:systemclass" negate="false" regexp="false" state="0">javafx.scene.layout.Pane</extrafeature>
+</ComponentStep>
+</ComponentStep>
+</ComponentStep>
+</ComponentStep>
+<ComponentStep class="Panel" classcount="6" classindex="1" height="22" id="ITC_SCELL_INPUT_BAR" name="ITC_SCELL_INPUT_BAR" uid="_Fe" width="1287" x="-1" y="2">
+<extrafeature name="qfs:class" negate="false" regexp="false" state="0">com.intechcore.scomponents.mvvm.super.A</extrafeature>
+<extrafeature name="qfs:genericclass" negate="false" regexp="false" state="0">Panel</extrafeature>
+<extrafeature name="qfs:systemclass" negate="false" regexp="false" state="0">javafx.scene.layout.Pane</extrafeature>
+<extrafeature name="styleclass" negate="false" regexp="false" state="0">scomponent-formula-input-bar-canvas</extrafeature>
+</ComponentStep>
+</ComponentStep>
+</ComponentStep>
+</ComponentStep>
+</ComponentStep>
+</ComponentStep>
+</WindowStep>
+</WindowList>
+</RootStep>
