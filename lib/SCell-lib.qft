@@ -100,7 +100,7 @@ println "getCellText() : $cellAddr -&gt; $result"
 <parameter>--module-path</parameter>
 <parameter>$(fxlibs)</parameter>
 <parameter>--add-modules</parameter>
-<parameter>ALL-MODULE-PATH</parameter>
+<parameter>javafx.base,javafx.controls</parameter>
 <parameter>--add-exports</parameter>
 <parameter>javafx.base/com.sun.javafx.runtime=ALL-UNNAMED</parameter>
 <parameter>-cp</parameter>
