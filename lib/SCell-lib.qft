@@ -193,6 +193,11 @@ public class ScellApiWrapper {
         this.resolver.resolve(IProductInfo.class).coreImpl(null)
     }
     
+    public String getRuntimeInfo() {
+        IProductInfo productInfo = this.resolver.resolve(IProductInfo.class)
+        return "Java: " + productInfo.getJavaVersionInfo() + "; JavaFX: " + productInfo.getJavaFxVersion()
+    }
+    
     public static ScellApiWrapper get() {
         return Holder.INSTANCE
     }
@@ -470,8 +475,7 @@ registry.registerRedirectResolver(new ScellTilesRedirector(mainContainerComponen
 def version = ScellApiWrapper.get().getVersion()
 println "Version: " + version
 rc.groups.env.SCELL_VERSION = version
-
-println "Version: " + rc.groups.env.SCELL_VERSION</code>
+println "Runtime: " + ScellApiWrapper.get().getRuntimeInfo()</code>
 </ClientScriptStep>
 </Procedure>
 <Procedure id="_CK" name="unregisterResolvers">
@@ -525,7 +529,8 @@ println "Version: " + rc.groups.env.SCELL_VERSION</code>
 <FetchTextStep client="$(client)" component="#Label:name=SCELL_API_FULL_VERSION" id="_PX" varname="api_version"/>
 <FetchTextStep client="$(client)" component="#Label:name=TOOLBAR_VERSION" id="_PY" varname="toolbar_version"/>
 <ClientScriptStep client="$(client)" id="_PL" interpreter="groovy">
-<code>String content = rc.getStr("app_version") + rc.getStr("api_version") + rc.getStr("toolbar_version")
+<code>def scell = ScellApiWrapper.get()
+String content = "SCell API: " + scell.getVersion() + "\n" + rc.getStr("app_version") + rc.getStr("toolbar_version") + "\n" + scell.getRuntimeInfo()
 rc.setLocal("text", content)</code>
 </ClientScriptStep>
 <ProcedureCall id="_PM" procedure="scellib.utils.saveTextToFile">
