@@ -3,8 +3,6 @@
 <RootStep id="_0" indentation="0" linelength="160" name="root" version="9.0.5">
 <include>qfs.qft</include>
 <include>lib/SCell-lib.qft</include>
-<variable name="appdir">${qftest:project.dir}/scell</variable>
-<variable name="client">scell</variable>
 <DependencyReference id="_8q" reference="scellib.init.startScell"/>
 <TestCase disabled="true" id="_Dd" name="Check success of startup">
 <CheckImageStep client="$(client)" component="ITC_SCELL_WORKSHEET_VIEW" height="303" id="_E0" width="1061" x="0" y="2">

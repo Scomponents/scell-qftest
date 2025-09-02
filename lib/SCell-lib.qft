@@ -2,7 +2,7 @@
 <!DOCTYPE RootStep>
 <RootStep id="_0" indentation="0" linelength="160" name="root" version="9.0.5">
 <include>qfs.qft</include>
-<variable name="appdir"/>
+<variable name="appdir">${qftest:project.dir}/scell</variable>
 <variable name="java">${system:java.home}/bin/java</variable>
 <variable name="fxlibs">${system:java.home}/javafx/lib</variable>
 <variable name="scell.desktop.class.name">com.intechcore.scell.app.DesktopApp</variable>
@@ -139,6 +139,8 @@ import de.qfs.apps.qftest.shared.data.SubItemIndex
 
 import de.qfs.apps.qftest.client.Client
 import de.qfs.apps.qftest.client.Engine
+
+import de.qfs.ImageWrapper
 
 import de.qfs.lib.util.Pair
 import de.qfs.lib.log.Log
@@ -473,9 +475,12 @@ registry.registerItemResolver(mainContainerComponent, cellResolver)
 registry.registerRedirectResolver(new ScellTilesRedirector(mainContainerComponent), Ids.TILE_ITEM_CLASS, rc.getComponent(Ids.SELECTION_CONTAINER_ID))
 
 def version = ScellApiWrapper.get().getVersion()
-println "Version: " + version
-rc.groups.env.SCELL_VERSION = version
-println "Runtime: " + ScellApiWrapper.get().getRuntimeInfo()</code>
+// rc.groups.env.SCELL_VERSION = version
+rc.logMessage("SCell Version: " + version, report:true, dontcompactify:true)
+rc.logMessage("SCell Runtime: " + ScellApiWrapper.get().getRuntimeInfo(), report:true, dontcompactify:true)
+def iw = new ImageWrapper(rc)
+def scellScreen = iw.grabImage(rc.getComponent("#Window:"))
+rc.logImage(scellScreen, title:"SCell " + version + " window startup screenshot", report:true, dontcompactify:true)</code>
 </ClientScriptStep>
 </Procedure>
 <Procedure id="_CK" name="unregisterResolvers">
