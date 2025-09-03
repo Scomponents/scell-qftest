@@ -2,6 +2,7 @@
 <!DOCTYPE RootStep>
 <RootStep id="_0" indentation="0" linelength="160" name="root" version="9.0.5">
 <include>qfs.qft</include>
+<variable name="startupdir">${qftest:project.dir}</variable>
 <variable name="appdir">${qftest:project.dir}/scell</variable>
 <variable name="java">${system:java.home}/bin/java</variable>
 <variable name="fxlibs">${system:java.home}/javafx/lib</variable>
@@ -96,7 +97,7 @@ println "getCellText() : $cellAddr -&gt; $result"
 <SetupSequence id="_6" name="Start SCell">
 <ClientWaiter client="$(client)" id="_8" local="true" raise="false" resvarname="isSUTRunning" timeout="0"/>
 <IfSequence id="_9" name="SUT starten, wenn notwendig" test="not $(isSUTRunning)">
-<SUTClientStarter client="$(client)" directory="${qftest:project.dir}" executable="$(java)" id="_A">
+<SUTClientStarter client="$(client)" directory="$(startupdir)" executable="$(java)" id="_A">
 <parameter>--module-path</parameter>
 <parameter>$(fxlibs)</parameter>
 <parameter>--add-modules</parameter>
