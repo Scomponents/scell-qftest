@@ -49,6 +49,7 @@
 <text>$(text)</text>
 </TextInputStep>
 <KeyEventStep client="$(client)" component="#Panel:name=ITC_SCELL_CELL_TEXT_EDITOR" event="KEY_PTR" id="_KH" keychar="10" keycode="10" modifiers="0"/>
+<ProcedureCall id="_Pd" procedure="qfs.utils.sleep"/>
 </Procedure>
 <Procedure id="_B6" name="inputTextViaInputBar">
 <variable name="cell_address">A&amp;2</variable>
@@ -74,7 +75,7 @@
 <code>String cellAddr = rc.getStr("cell_address")
 String result = ScellApiWrapper.get().getCellValue(cellAddr)
 rc.setLocal("result", result)
-println "getCellText() : $cellAddr -&gt; $result"
+// println "getCellText() : $cellAddr -&gt; $result"
 
 </code>
 </ClientScriptStep>
@@ -524,6 +525,42 @@ rc.logImage(scellScreen, title:"SCell " + version + " window startup screenshot"
 </MouseEventStep>
 </IfSequence>
 <MouseEventStep clicks="1" client="$(client)" component="#%javafx.scene.control.Labeled:feature=$(item)" event="MOUSE_MPRC" id="_D9" modifiers="16"/>
+<IfSequence id="_Pe" test="&#34;$(group)&#34;">
+<ProcedureCall id="_Pj" procedure="qfs.utils.sleep"/>
+<ProcedureCall id="_Pk" procedure="qfs.fx.cleanup.closeAllMenus"/>
+</IfSequence>
+</Procedure>
+<Procedure id="_Pt" name="clickButtonByIdsHierarchy">
+<variable name="comma_separated_ids">ITC_TOOLBOX_BUTTON_SERVICE_FUNCTIONS_SUBMENU,ITC_TOOLBOX_BUTTON_SWITCH_FORMULA_INPUT_BAR_VISIBILITY</variable>
+<comment>Select an entry in the tool bar based on labels (tool tips).
+
+@param	group	The group which the item belongs to.
+@param	item	The item to be selected.
+
+@author	QFS
+@since	8.0.2</comment>
+<ProcedureCall id="_1nFi" procedure="qfs.fx.cleanup.closeAllMenus"/>
+<ServerScriptStep id="_1nFZ" interpreter="groovy" name="Getting the first ID">
+<code>flatIds = rc.getStr("comma_separated_ids")
+rc.setLocal("first_id", flatIds.split(",")[0])</code>
+</ServerScriptStep>
+<ComponentWaiter client="$(client)" component="#$(first_id)" id="_1nFa" local="true" raise="false" resvarname="isVisible" timeout="0">
+<comment>@scope #ToolBar:</comment>
+</ComponentWaiter>
+<IfSequence id="_1nFb" test="not $(isVisible)">
+<MouseEventStep clicks="1" client="$(client)" component="#Panel:styleclass=tool-bar-overflow-button" event="MOUSE_MPRC" id="_1nFc" modifiers="16">
+<comment>@scope #ToolBar:</comment>
+</MouseEventStep>
+</IfSequence>
+<ServerScriptStep id="_1nFU" name="Open the menu hierarchy">
+<code>flatIds = rc.getStr("comma_separated_ids")
+ids = flatIds.split(",")
+for control_id in ids:
+    if control_id:
+        rc.callProcedure("qfs.fx.general.doClick", {"id" : "#" + control_id})
+        rc.callProcedure("qfs.utils.sleep")</code>
+</ServerScriptStep>
+<ProcedureCall id="_QQ" procedure="qfs.fx.cleanup.closeAllMenus"/>
 </Procedure>
 </Package>
 <Package id="_Lt" name="utils">
