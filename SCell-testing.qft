@@ -169,6 +169,11 @@ gF^a~z4@Paq)FzoAA</webp>
 <variable name="text">=SUM(D1:D2)</variable>
 <variable name="clear">true</variable>
 </ProcedureCall>
+<ProcedureCall id="_L-" procedure="scellib.ui.inputTextViaInputBar">
+<variable name="cell_address">D5</variable>
+<variable name="text">=12+</variable>
+<variable name="clear">true</variable>
+</ProcedureCall>
 </TestStep>
 <TestStep id="_BX" name="checks">
 <ProcedureCall id="_Lu" procedure="scellib.api.checkCellValue">
@@ -199,98 +204,23 @@ gF^a~z4@Paq)FzoAA</webp>
 <variable name="cell_address">D3</variable>
 <variable name="expected">21</variable>
 </ProcedureCall>
-<CheckImageStep algorithm="algorithm=similarity;expected=0.97" checktype="cell_image" client="$(client)" component="panelFirst.panel" disabled="true" id="_Bb">
-<ImageNode height="20" name="checkimage" width="64">
-<webp size="190">UaRzPmBAv(*wpBQPT?=ZVAAAn`.hCA1vU*1^AywYcMKG#P.$?*]yy^UCJ*H%Ey28y[!TjY=M%c7Qft8WSU
-]-8v;Hj$=MNoL/2,*VC-X4aS*qDqx{?~|}M{G}!BjBKp#kMdA!dRG_Pux_"9E_@4HD#@aiHH6vmq4XM7
-tMTDw8|C)#R@''AVP"hAI)NQurDWyB$MnMXffzaOuqVchh~ZRF@NHh[6}9CMB9'UAQU|h~k</webp>
+<ProcedureCall id="_M0" procedure="scellib.api.checkCellHasErrorState">
+<variable name="cell_address">D5</variable>
+</ProcedureCall>
+<ProcedureCall id="_M2" procedure="scellib.api.checkCellHasErrorState">
+<variable name="cell_address">A1</variable>
+<variable name="hasError">false</variable>
+</ProcedureCall>
+<CheckImageStep client="$(client)" component="#Panel:name=ITC_SCELL_CONTENT_RENDERER_CONTAINER" disabled="true" height="16" id="_M9" width="60">
+<ImageNode height="18" name="checkimage" width="60">
+<webp size="162">UaRzrSBAv(*wpBQPT?37RAAA_!aLCA5(\#[UkOH97p$CD/J$!mo74H_87.nlL^W$3A:@}s=7K_AbNw"sP/
+}^tDB-\CtW05A2(_yGY|zf7$wJaNbPfGWBjvdDnZPoc\ctFkcN5*EI1lCAJRW^7+}Xxc[!6NI(6xZa~O
+gcvTUJ-J{AO'Vv*tpAwQz9'dMN,\\sIDj_CA</webp>
 </ImageNode>
 </CheckImageStep>
 </TestStep>
 </TestCase>
 <PackageRoot id="_3"/>
 <ExtraSequence id="_4"/>
-<WindowList id="_5">
-<WindowStep class="Window" engine="fx" feature="SCell Desktop Application :: &lt;new file&gt;" height="800"
-            id="winSCell_Desktop_Application_::_&lt;new_file&gt;" uid="_FR" width="1300">
-<extrafeature name="qfs:class" negate="false" regexp="false" state="0">javafx.stage.Stage</extrafeature>
-<extrafeature name="qfs:genericclass" negate="false" regexp="false" state="0">Window</extrafeature>
-<extrafeature name="qfs:labelBest" negate="false" regexp="false" state="0">SCell Desktop Application :: &lt;new file&gt;</extrafeature>
-<extrafeature name="qfs:labelTitle" negate="false" regexp="false" state="1">SCell Desktop Application :: &lt;new file&gt;</extrafeature>
-<extrafeature name="qfs:systemclass" negate="false" regexp="false" state="0">javafx.stage.Stage</extrafeature>
-<ComponentStep class="Panel" classcount="8" classindex="3" height="700" id="ITC_SCELL_MAIN_VIEW" name="ITC_SCELL_MAIN_VIEW" uid="_FS" width="1292" x="4" y="74">
-<extrafeature name="qfs:class" negate="false" regexp="false" state="0">com.intechcore.scell.integration.spreadsheet.MainView</extrafeature>
-<extrafeature name="qfs:genericclass" negate="false" regexp="false" state="0">Panel</extrafeature>
-<extrafeature name="qfs:systemclass" negate="false" regexp="false" state="0">javafx.scene.layout.StackPane</extrafeature>
-<ComponentStep class="Panel" classcount="1" classindex="0" height="700" id="MAIN_LAYOUT_CONTAINER" name="MAIN_LAYOUT_CONTAINER" uid="_FT" width="1292" x="0"
-               y="0">
-<extrafeature name="qfs:class" negate="false" regexp="false" state="0">javafx.scene.layout.VBox</extrafeature>
-<extrafeature name="qfs:genericclass" negate="false" regexp="false" state="0">Panel</extrafeature>
-<extrafeature name="qfs:systemclass" negate="false" regexp="false" state="0">javafx.scene.layout.VBox</extrafeature>
-<ComponentStep class="SplitPanel" classcount="1" classindex="0" height="700" id="ITC_SCELL_MAIN_SPLIT_CONTROLS_CONTAINER"
-               name="ITC_SCELL_MAIN_SPLIT_CONTROLS_CONTAINER" uid="_FU" width="1292" x="0" y="0">
-<extrafeature name="qfs:class" negate="false" regexp="false" state="0">javafx.scene.control.SplitPane</extrafeature>
-<extrafeature name="qfs:genericclass" negate="false" regexp="false" state="0">SplitPanel</extrafeature>
-<extrafeature name="qfs:systemclass" negate="false" regexp="false" state="0">javafx.scene.control.SplitPane</extrafeature>
-<extrafeature name="styleclass" negate="false" regexp="false" state="0">split-pane</extrafeature>
-<ComponentStep class="Panel" classcount="1" classindex="0" feature="Split: First" height="698" id="panelFirst" uid="_FV" width="1290" x="1" y="1">
-<extrafeature name="qfs:class" negate="false" regexp="false" state="0">javafx.scene.layout.StackPane</extrafeature>
-<extrafeature name="qfs:genericclass" negate="false" regexp="false" state="0">Panel</extrafeature>
-<extrafeature name="qfs:systemclass" negate="false" regexp="false" state="0">javafx.scene.layout.StackPane</extrafeature>
-<extrafeature name="qfs:type" negate="false" regexp="false" state="0">Panel:SplitPanelContent</extrafeature>
-<ComponentStep class="javafx.scene.layout.Region" classcount="1" classindex="0" height="698" id="ITC_SCELL_SPREADSHEET_VIEW" name="ITC_SCELL_SPREADSHEET_VIEW"
-               uid="_FW" width="1290" x="0" y="0">
-<extrafeature name="qfs:class" negate="false" regexp="false" state="0">com.intechcore.scell.integration.spreadsheet.SpreadsheetView</extrafeature>
-<extrafeature name="qfs:systemclass" negate="false" regexp="false" state="0">javafx.scene.layout.Region</extrafeature>
-<extrafeature name="styleclass" negate="false" regexp="false" state="0">spreadsheet scomponent</extrafeature>
-<ComponentStep class="javafx.scene.layout.Region" classcount="9" classindex="3" height="660" id="ITC_SCELL_WORKSHEET_VIEW" name="ITC_SCELL_WORKSHEET_VIEW"
-               uid="_FX" width="1313" x="-1" y="26">
-<extrafeature name="qfs:class" negate="false" regexp="false" state="0">com.intechcore.scell.integration.spreadsheet.WorksheetView</extrafeature>
-<extrafeature name="qfs:systemclass" negate="false" regexp="false" state="0">javafx.scene.layout.Region</extrafeature>
-<extrafeature name="styleclass" negate="false" regexp="false" state="0">worksheet</extrafeature>
-<ComponentStep class="Panel" classcount="3" classindex="0" height="631" id="ITC_SCELL_MAIN_SPREADSHEET_CONTAINER" name="ITC_SCELL_MAIN_SPREADSHEET_CONTAINER"
-               uid="_Fh" width="1237" x="33" y="20">
-<extrafeature name="qfs:class" negate="false" regexp="false" state="0">com.intechcore.scomponents.mvvm.oOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO.E</extrafeature>
-<extrafeature name="qfs:genericclass" negate="false" regexp="false" state="0">Panel</extrafeature>
-<extrafeature name="qfs:systemclass" negate="false" regexp="false" state="0">javafx.scene.layout.Pane</extrafeature>
-<extrafeature name="styleclass" negate="false" regexp="false" state="0">grid</extrafeature>
-<ComponentStep class="javafx.scene.layout.Region" classcount="4" classindex="1" height="186" id="ITC_SCELL_SELECTION_LAYER" name="ITC_SCELL_SELECTION_LAYER"
-               uid="_Fi" width="1030" x="0" y="0">
-<extrafeature name="qfs:class" negate="false" regexp="false" state="0">com.intechcore.scell.integration.spreadsheet.SelectionLayer</extrafeature>
-<extrafeature name="qfs:systemclass" negate="false" regexp="false" state="0">javafx.scene.layout.Region</extrafeature>
-<extrafeature name="styleclass" negate="false" regexp="false" state="0">selection</extrafeature>
-</ComponentStep>
-<ComponentStep class="Panel" classcount="2" classindex="0" height="631" id="ITC_SCELL_CONTENT_RENDERER_CONTAINER" name="ITC_SCELL_CONTENT_RENDERER_CONTAINER"
-               uid="_Fl" width="1237" x="1" y="1">
-<extrafeature name="qfs:class" negate="false" regexp="false" state="0">javafx.scene.layout.Pane</extrafeature>
-<extrafeature name="qfs:genericclass" negate="false" regexp="false" state="0">Panel</extrafeature>
-<extrafeature name="qfs:systemclass" negate="false" regexp="false" state="0">javafx.scene.layout.Pane</extrafeature>
-<ComponentStep class="Panel" classcount="2" classindex="0" height="546" id="ITC_SCELL_CANVAS_TILE_CONTAINER_A1" name="ITC_SCELL_CANVAS_TILE_CONTAINER_A1"
-               uid="_Fm" width="1790" x="0" y="0">
-<extrafeature name="qfs:class" negate="false" regexp="false" state="0">com.intechcore.scell.integration.spreadsheet.grid.renderer.VectorPaneRenderer</extrafeature>
-<extrafeature name="qfs:genericclass" negate="false" regexp="false" state="0">Panel</extrafeature>
-<extrafeature name="qfs:systemclass" negate="false" regexp="false" state="0">javafx.scene.layout.Pane</extrafeature>
-</ComponentStep>
-<ComponentStep class="Panel" classcount="2" classindex="1" height="546" id="ITC_SCELL_CANVAS_TILE_CONTAINER_A28" name="ITC_SCELL_CANVAS_TILE_CONTAINER_A28"
-               uid="_G3" width="1790" x="0" y="540">
-<extrafeature name="qfs:class" negate="false" regexp="false" state="0">com.intechcore.scell.integration.spreadsheet.grid.renderer.VectorPaneRenderer</extrafeature>
-<extrafeature name="qfs:genericclass" negate="false" regexp="false" state="0">Panel</extrafeature>
-<extrafeature name="qfs:systemclass" negate="false" regexp="false" state="0">javafx.scene.layout.Pane</extrafeature>
-</ComponentStep>
-</ComponentStep>
-</ComponentStep>
-</ComponentStep>
-<ComponentStep class="Panel" classcount="6" classindex="1" height="22" id="ITC_SCELL_INPUT_BAR" name="ITC_SCELL_INPUT_BAR" uid="_Fe" width="1287" x="-1" y="2">
-<extrafeature name="qfs:class" negate="false" regexp="false" state="0">com.intechcore.scomponents.mvvm.super.A</extrafeature>
-<extrafeature name="qfs:genericclass" negate="false" regexp="false" state="0">Panel</extrafeature>
-<extrafeature name="qfs:systemclass" negate="false" regexp="false" state="0">javafx.scene.layout.Pane</extrafeature>
-<extrafeature name="styleclass" negate="false" regexp="false" state="0">scomponent-formula-input-bar-canvas</extrafeature>
-</ComponentStep>
-</ComponentStep>
-</ComponentStep>
-</ComponentStep>
-</ComponentStep>
-</ComponentStep>
-</WindowStep>
-</WindowList>
+<WindowList id="_5"/>
 </RootStep>

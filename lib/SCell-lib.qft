@@ -92,6 +92,17 @@ rc.setLocal("result", result)
 <variable name="message">$(message)</variable>
 </ProcedureCall>
 </Procedure>
+<Procedure id="_1nFn" name="checkCellHasErrorState">
+<variable name="cell_address">A1</variable>
+<variable name="hasError">True</variable>
+<variable name="message">Cell "$(cell_address)" has no error state as expected</variable>
+<ClientScriptStep client="$(client)" id="_1nFs" interpreter="groovy">
+<code>String cellAddr = rc.getStr("cell_address")
+Boolean expected = rc.getBool("hasError")
+Boolean actual = ScellApiWrapper.get().isErrorInCell(cellAddr)
+rc.checkEqual(actual.toString(), expected.toString(), rc.getStr("message"))</code>
+</ClientScriptStep>
+</Procedure>
 </Package>
 <Package id="_LK" name="init">
 <Dependency id="_8m" name="startScell">
@@ -160,7 +171,9 @@ import com.intechcore.scomponents.scell.api.fx.ScellControlStorage
 import com.intechcore.scomponents.scell.api.init.ScellApiEntryPoint
 import com.intechcore.scomponents.scell.api.spreadsheet.model.address.IRangeAddress
 import com.intechcore.scomponents.scell.api.spreadsheet.service.builder.IRangeAddressBuilder
+import com.intechcore.scomponents.scell.api.spreadsheet.model.data.value.IValue
 import com.intechcore.scomponents.scell.api.spreadsheet.model.data.IProductInfo
+import com.intechcore.scomponents.scell.api.spreadsheet.service.IValueService
 
 public class Ids {
     static String TILE_ITEM_CLASS = "com.intechcore.scell.integration.spreadsheet.grid.renderer.ContentOutputContainer"
@@ -186,11 +199,23 @@ public class ScellApiWrapper {
     }
 
     public String getCellValue(String cellAddress) {
-        return this.scellUiApi.getContentManager().getActiveWorksheet().getValueService().get(cellAddress).asString()
+        return this.getValueService().get(cellAddress).asString()
+    }
+
+    public Boolean isErrorInCell(String cellAddress) {
+        Boolean result = Boolean.FALSE
+        if (this.getValueService().get(cellAddress).getType() == IValue.ValueType.ERROR) {
+            result = Boolean.TRUE
+        }
+        return result
     }
 
     public IRangeAddress parseCellAddress(String cellAddress) {
         return this.createAddressBuilder().fromA1String(cellAddress).buildCell()
+    }
+
+    public IValueService getValueService() {
+        return this.scellUiApi.getContentManager().getActiveWorksheet().getValueService()
     }
 
     public String getVersion() {
